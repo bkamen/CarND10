@@ -8,6 +8,11 @@ using namespace std;
 
 class MPC {
  public:
+
+  //  vectors to display the predicted trajectory
+  vector<double> mpc_x_vals;
+  vector<double> mpc_y_vals;
+
   MPC();
 
   virtual ~MPC();
