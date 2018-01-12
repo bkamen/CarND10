@@ -96,9 +96,15 @@ class FG_eval {
       AD<double> cte0 = vars[cte_start + t];
       AD<double> epsi0 = vars[epsi_start + t];
 
-      // Only consider the actuation at time t.
+      // Only consider the actuation at time t for first 2 iterations
       AD<double> delta0 = vars[delta_start + t];
       AD<double> a0 = vars[a_start + t];
+      // after take into account latency
+      if (t>1) {
+        AD<double> delta0 = vars[delta_start + t-2];
+        AD<double> a0 = vars[a_start + t-2];
+      }
+      
 
       AD<double> f0 = 0.0;
       for (int i = 0; i < coeffs.size(); i++) {

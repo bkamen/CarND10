@@ -126,22 +126,13 @@ int main() {
           double epsi = -atan(coeffs[1]);
 
           Eigen::VectorXd state(6);
-
-          // calculation of states with bicycle model
-          /*
-          state[0] = v * dt;
-          state[1] = 0;
-          state[2] = v / Lf * -steering_angle * dt;
-          state[3] = v + throttle * dt;
-          state[4] = cte + v * sin(epsi) *dt;
-          state[5] = epsi + (v / Lf * -steering_angle * dt);
-          */
           state[0] = 0;
           state[1] = 0;
           state[2] = 0;
           state[3] = v;
           state[4] = cte;
           state[5] = epsi;
+          
           vector<double> actuators = mpc.Solve(state, coeffs);
 
           steer_value = -actuators[0] / (deg2rad(25)*Lf);
