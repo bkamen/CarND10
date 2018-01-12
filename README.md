@@ -3,6 +3,12 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
+## Solution
+
+### Model
+
+
+
 ## Dependencies
 
 * cmake >= 3.5
