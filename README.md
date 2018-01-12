@@ -7,6 +7,11 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### Model
 
+### Model Parameters (timestep length N & elapsed duration dt)
+
+### Polynomial Fitting and MPC Preprocessing
+
+### Model Predictive Control with Latency
 
 
 ## Dependencies
