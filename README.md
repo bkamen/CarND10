@@ -7,12 +7,31 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### Model
 
+The kinematic bicycle model was used to predict the vehicle's position whereas slip (longitudinal and lateral) was neglected. The equations of motion of the model are:
+
+
+    x[t+1] = x[t] + v[t] * cos(psi[t]) * dt
+    y[t+1] = y[t] + v[t] * sin(psi[t]) * dt
+    psi[t+1] = psi[t] + v[t] / Lf * delta[t] * dt
+    v[t+1] = v[t] + a[t] * dt
+    cte[t+1] = f(x[t]) - y[t] + v[t] * sin(epsi[t]) * dt
+    epsi[t+1] = psi[t] - psides[t] + v[t] * delta[t] / Lf * dt
+
+x and y are the cartesian coordinates, psi the heading angle, v the velocity, cte the cross-track error and epsi the psi error.
+
 ### Model Parameters (timestep length N & elapsed duration dt)
+
+The combination of N=10 and dt=0.1 delivered the best results for the mpc. This way 1s is simulated ahead and seems a reasonable tradeoff between controller performance and calculation time.
+
 
 ### Polynomial Fitting and MPC Preprocessing
 
+The waypoints are transformed in the vehicle coordinate system and then a 3rd order polynomial is fitted to it.
+
 ### Model Predictive Control with Latency
 
+To account for latency in MPC.cpp line 103-106 the controller takes the previous values for the control input which is equivalent to a 100 ms delay.
+The controller deals with latency by limiting the speed and the control gradients.
 
 ## Dependencies
 
